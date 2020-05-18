@@ -7,7 +7,7 @@ import { useForm } from "../hooks/useForm";
 
 const CheckoutForm = (props) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [values, setValues, handleChanges] = useForm();
+  const [values, handleChanges] = useForm();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +24,7 @@ const CheckoutForm = (props) => {
             name="firstName"
             value={values.firstName}
             onChange={handleChanges}
+            data-testid="firstName"
           />
         </label>
         <label>
@@ -32,6 +33,7 @@ const CheckoutForm = (props) => {
             name="lastName"
             value={values.lastName}
             onChange={handleChanges}
+            data-testid="lastName"
           />
         </label>
         <label>
@@ -40,21 +42,22 @@ const CheckoutForm = (props) => {
             name="address"
             value={values.address}
             onChange={handleChanges}
+            data-testid="address"
           />
         </label>
         <label>
           City:
-          <input name="city" value={values.city} onChange={handleChanges} />
+          <input name="city" value={values.city} onChange={handleChanges} data-testid="city"/>
         </label>
         <label>
           State:
-          <input name="state" value={values.state} onChange={handleChanges} />
+          <input name="state" value={values.state} onChange={handleChanges} data-testid="state"/>
         </label>
         <label>
           Zip:
-          <input name="zip" value={values.zip} onChange={handleChanges} />
+          <input name="zip" value={values.zip} onChange={handleChanges} data-testid="zip"/>
         </label>
-        <button>Checkout</button>
+        <button data-testid="sub">Checkout</button>
       </form>
 
       {showSuccessMessage && (
