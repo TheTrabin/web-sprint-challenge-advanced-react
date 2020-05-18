@@ -9,7 +9,7 @@ test("form header renders", () => {
 }); //pass
 
 test("form shows success message on submit with form details", async () => {
-    const { getByTestId, findByTestId } = render(<CheckoutForm />); //pass
+    const { getByTestId, findByTestId, getByText} = render(<CheckoutForm />); //pass
 
     const firstName = getByTestId("firstName"); //pass
     const lastName = getByTestId("lastName"); //pass
@@ -38,4 +38,5 @@ test("form shows success message on submit with form details", async () => {
     fireEvent.click(sub); //pass
 
     const success = await getByTestId("successMessage"); //pass
+    
 });

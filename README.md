@@ -30,13 +30,80 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+A stateless component usually is just a set or a single function.
+
+A Stateful class component tends to set up the states in the primary class descriptor.
+Stateful Class Components make use of State, references, lifecycle hooks, and helps with Rerendering information to the display and through the Application in React as a base component.
+
+First you need to extend the parent class.
+Then you set up your constructor if needed, though often afterwards you can just set up your states that you need to have controlled at that level.
+super imposes strict access to "this" for this.state
+
+class Example extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+}
+
+This gives access to some good elements and functions from the React API directly, reducing some extra steps.
+
+
 2. Describe the different phases of the component lifecycle.
+
+Render Phase: Just the base information before getting and setting any states, usually involves an initial state to be modified later. This is also the phase in the beginning that renders the base information, and then recycles whenever something gets changed.
+
+Pre-Commit Phase: Just reading what is on the DOM, no matter if at this stage something have been updated or added.
+
+Commit Phase: Runs side effects, updates the DOM after checking it's health, then schedules needed updates to re-render informaiton.
+
+Birth/Mounting: This is when everything gets invoked/Mounted.
+componentDidMount gets called.
+
+Growth/Updating: Set State can update and change component information, pushing a rerender of information.
+shouldComponentUpdate gets called if added, not always necessary.
+
+Death/Un-Mount: Component is removed.
+componentWillUnmount can be called for things like Clean-up actions.
+
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
+First, the constructor is called if it has one and doesn't apply function. It gets called with props: Super is required to pass the props. If you need a ref, you need constructor.
+
+Next, you initialize your states to be set, valued, called upon.
+
+After everything is rendered for the first time, you want to call your componentDidMount. If you need to make data calls, best place to do it. After which it'll call a re-render, but CDM is only called once. componentDidMount is a method called once in the beginning to set up the initial state of the component.
+
+Updating: Lots of methods to update information, but that's the next step:
+
+getDerivedStateFromProps: Not common, and not used if you actually set state.
+shouldComponentUpdate:  Whenever anything, like state, changes as a check if anything changed. Not common practice to use.
+render: renders.
+getSnapshotBeforeUpdate: Checks the Dom before render to make sure things are updated.
+componentDidUpdate: Says it in the name, clarification app side.
+componentWillUnmount: When the component completes what it needs to and is no longer needed, you can call it to unmount and verify that it infact did unmount.
+
+There's a lot more methods involved in the React Lifecycle methods.
+
 4. Define stateful logic.
 
+Stateful Logic is logic built into the components we program. Usually involves accessing or running functions involved with state, such as setting state based on user input or other functions such as those that update information to be rendered.
+
+Very important when dealing with non-visual stuff, like setting and applying states, and creating/setting up custom hooks.
+
 5. Describe how to test a React component with React Testing Library.
+
+Arrange: to search, locate, and identify what you're testing and setting up your code so it can be tested.
+Act: Calling a method or function that gives us the results of our testing.
+Assert: Verification of the test returning expected results.
+
+First you import React, your testing library, and then the component you want to test.
+Then you call the component to make sure that it actually renders.
+You then set up your Arrangement so the test can locate what you want to test, such as pulling getBy information so you can use it in your act stage.
+Then you Act on your test, by searching for your information.
+Finally, you Assert that your testing completes in the method your test requires.
+
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -74,7 +141,7 @@ _Please follow the setup instructions closely so that you can get everything up 
 **Starting your test runner**
 
 - [x] In the final terminal window, make sure you are in the `client` folder still
-- [ ] Start the test runner with `npm test` (I recommend doing this only when you're testing - any change in your app will make the tests run, and that could eat up your computer power)
+- [x] Start the test runner with `npm test` (I recommend doing this only when you're testing - any change in your app will make the tests run, and that could eat up your computer power)
 
 **Commit and Push OFTEN!**
 
@@ -107,8 +174,8 @@ _Note: You built a useForm hook in the guided project this week. You will probab
 
 #### Testing the Checkout Form
 
-- [ ] Build out the tests listed in `CheckoutForm.test.js`. You will need to make sure they are testing what the test title implies they are testing
-- [ ] Make sure the tests are passing, and make sure you can cause the tests to fail purposefully, so that you know the tests are truly working
+- [x] Build out the tests listed in `CheckoutForm.test.js`. You will need to make sure they are testing what the test title implies they are testing
+- [x] Make sure the tests are passing, and make sure you can cause the tests to fail purposefully, so that you know the tests are truly working
 
 <hr/>
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
@@ -118,7 +185,7 @@ In your solution, it is essential that you follow best practices and produce cle
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
 - [ ] Add a filter input to the plant list page.
-- [ ] Build and implement another custom hook - a dark mode hook would be great for this project, though you'll have to style the light theme ☀️ 🌙
+- [x] Build and implement another custom hook - a dark mode hook would be great for this project, though you'll have to style the light theme ☀️ 🌙
 - [ ] Add a test file for the `ShoppingCart` component and test that it displays plants there (you'll need some mock plant data for the test, and then you can pass that data in as a prop when you call `render` and render the component - see the example below)
 
 ```js
